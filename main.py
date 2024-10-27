@@ -1,6 +1,5 @@
 import os
 import numpy as np
-import pandas as pd
 from dash import Dash, dcc
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
@@ -730,7 +729,6 @@ def input_reduction_find_solar_amount(
 ):
     for option in find_solar_panel_amount_dict:
         option = find_solar_panel_amount_dict[option]
-        print(option, percentage_piek_usage, battery_ratio, total_reduction)
         if (option["percentage_piek_usage"] == percentage_piek_usage and
             option["battery_capacity_ratio"] == battery_ratio and
             option["total_reduction_percentage"] == total_reduction*100
@@ -1140,21 +1138,21 @@ def create_output_dict(
         solar_ratio,
 ):
 
-    print(
-        kwh_usage,
-        piekhours_costs,
-        dalhours_costs,
-        total_gas_usage,
-        gas_price,
-        cost_per_panel,
-        cost_battery_capacity,
-        total_Reduction_percentage,
-        percentage_piek_usage,
-        battery_ratio,
-        enable_heatpump,
-        heatpump_price,
-        solar_ratio,
-    )
+    # print(
+    #     kwh_usage,
+    #     piekhours_costs,
+    #     dalhours_costs,
+    #     total_gas_usage,
+    #     gas_price,
+    #     cost_per_panel,
+    #     cost_battery_capacity,
+    #     total_Reduction_percentage,
+    #     percentage_piek_usage,
+    #     battery_ratio,
+    #     enable_heatpump,
+    #     heatpump_price,
+    #     solar_ratio,
+    # )
     average_price_per_kwh = piekhours_costs * percentage_piek_usage + dalhours_costs * (1 - percentage_piek_usage)
     total_amount_of_solar_panels = (kwh_usage / 1000) * solar_ratio
     total_amount_of_batteries = (kwh_usage * battery_ratio)
